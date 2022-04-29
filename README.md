@@ -5,11 +5,20 @@ This is a [Blitz.js](https://github.com/blitz-js/blitz) app.
 # **blitz_vote**
 
 ## Setup
+
 ```
 `npm install -g blitz --legacy-peer-deps` or `yarn global add blitz`
 blitz -v
-
+blitz new blitz_vote
 ```
+
+✔ Pick a new project's language · TypeScript
+✔ Pick your new app template · full
+✔ Install dependencies? · yarn
+✔ Pick a form library (you can switch to something else later if you want) · React Final Form
+
+Then, follow the tutorial here [https://blitzjs.com/docs/tutorial](https://blitzjs.com/docs/tutorial)
+¸
 
 ## Getting Started
 

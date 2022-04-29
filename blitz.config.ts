@@ -15,5 +15,9 @@ const config: BlitzConfig = {
     return config
   },
   */
+  /*webpack: (config) => {
+    config.experiments = { topLevelAwait: true }
+    return config
+  },*/
 }
 module.exports = config
