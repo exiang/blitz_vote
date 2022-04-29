@@ -4,9 +4,22 @@ import { Form, FORM_ERROR } from "app/core/components/Form"
 import login from "app/auth/mutations/login"
 import { Login } from "app/auth/validations"
 
-import { Button, ButtonGroup } from "@chakra-ui/react"
-import { Heading } from "@chakra-ui/react"
-import { Center, Square, Circle } from "@chakra-ui/react"
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Checkbox,
+  Stack,
+  Button,
+  Heading,
+  Text,
+  Link as ChakraLink,
+  useColorModeValue,
+} from "@chakra-ui/react"
+
+// Link crash with Nextjs use, override like this https://github.com/chrisbull/blitz-app-with-chakra-ui-template/tree/main/app/core/components
 
 type LoginFormProps = {
   onSuccess?: (user: PromiseReturnType<typeof login>) => void
@@ -17,40 +30,79 @@ export const LoginForm = (props: LoginFormProps) => {
 
   return (
     <div>
-      <Heading>Login</Heading>
-
-      <Form
-        submitText="Login"
-        schema={Login}
-        initialValues={{ email: "", password: "" }}
-        onSubmit={async (values) => {
-          try {
-            const user = await loginMutation(values)
-            props.onSuccess?.(user)
-          } catch (error: any) {
-            if (error instanceof AuthenticationError) {
-              return { [FORM_ERROR]: "Sorry, those credentials are invalid" }
-            } else {
-              return {
-                [FORM_ERROR]:
-                  "Sorry, we had an unexpected error. Please try again. - " + error.toString(),
-              }
-            }
-          }
-        }}
+      <Flex
+        minH={"100vh"}
+        align={"center"}
+        justify={"center"}
+        bg={useColorModeValue("gray.50", "gray.800")}
       >
-        <LabeledTextField name="email" label="Email" placeholder="Email" />
-        <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
-        <div>
-          <Link href={Routes.ForgotPasswordPage()}>
-            <a>Forgot your password?</a>
-          </Link>
-        </div>
-      </Form>
+        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+          <Stack align={"center"}>
+            <Heading fontSize={"4xl"}>Sign in to your account</Heading>
+            <Text fontSize={"lg"} color={"gray.600"}>
+              to enjoy all of our cool features ✌️
+            </Text>
+          </Stack>
+          <Box rounded={"lg"} bg={useColorModeValue("white", "gray.700")} boxShadow={"lg"} p={8}>
+            <Stack spacing={4}>
+              <Form
+                submitText="Sign In"
+                schema={Login}
+                initialValues={{ email: "", password: "" }}
+                onSubmit={async (values) => {
+                  try {
+                    const user = await loginMutation(values)
+                    props.onSuccess?.(user)
+                  } catch (error: any) {
+                    if (error instanceof AuthenticationError) {
+                      return { [FORM_ERROR]: "Sorry, those credentials are invalid" }
+                    } else {
+                      return {
+                        [FORM_ERROR]:
+                          "Sorry, we had an unexpected error. Please try again. - " +
+                          error.toString(),
+                      }
+                    }
+                  }
+                }}
+              >
+                <FormControl id="email">
+                  <LabeledTextField name="email" label="Email" placeholder="Email" />
+                </FormControl>
 
-      <div style={{ marginTop: "1rem" }}>
-        Or <Link href={Routes.SignupPage()}>Sign Up</Link>
-      </div>
+                <FormControl id="password">
+                  <LabeledTextField
+                    name="password"
+                    label="Password"
+                    placeholder="Password"
+                    type="password"
+                  />
+                </FormControl>
+              </Form>
+              <Stack spacing={10}>
+                <Stack
+                  direction={{ base: "column", sm: "row" }}
+                  align={"start"}
+                  justify={"space-between"}
+                >
+                  <Checkbox>Remember me</Checkbox>
+                  <Link href={Routes.ForgotPasswordPage()}>
+                    <ChakraLink color={"blue.400"}>Forgot Password?</ChakraLink>
+                  </Link>
+                </Stack>
+              </Stack>
+              <Stack pt={6}>
+                <Text align={"center"}>
+                  Don&apos;t have an account?{" "}
+                  <Link href={Routes.SignupPage()}>
+                    <ChakraLink color={"blue.400"}>Sign Up Now</ChakraLink>
+                  </Link>
+                </Text>
+              </Stack>
+            </Stack>
+          </Box>
+        </Stack>
+      </Flex>
     </div>
   )
 }

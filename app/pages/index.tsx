@@ -8,13 +8,16 @@ import logo from "public/logo.png"
 import {
   Container,
   Flex,
+  Stack,
   Spacer,
   Center,
   Square,
   Circle,
   Heading,
+  Text,
   Box,
   Button,
+  Link as ChakraLink,
   ButtonGroup,
 } from "@chakra-ui/react"
 
@@ -59,22 +62,25 @@ const UserInfo = () => {
     )
   } else {
     return (
-      <Flex justify="center" alignItems="center">
-        <Box maxW="480px" mx="auto">
-          <Heading mt={10} mb={10}>
-            Blitz Vote
-          </Heading>
-          <Link href={Routes.SignupPage()}>
-            <Button colorScheme="teal" mb={3} isFullWidth={true}>
-              <strong>Sign Up</strong>
-            </Button>
-          </Link>
+      <Flex minH={"100vh"} align={"center"} justify={"center"}>
+        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+          <Stack align={"center"}>
+            <Heading fontSize={"4xl"}>Blitz Vote</Heading>
+            <Text fontSize={"lg"} color={"gray.600"}>
+              Yee Siang&apos;s first Blitz + Chakra UI app
+            </Text>
+          </Stack>
           <Link href={Routes.LoginPage()}>
-            <Button colorScheme="teal" mb={3} isFullWidth={true}>
+            <Button bg={"blue.400"} _hover={{ bg: "blue.500" }} mb={2} isFullWidth={true}>
               <strong>Login</strong>
             </Button>
           </Link>
-        </Box>
+          <Link href={Routes.SignupPage()}>
+            <Button variant="outline" _hover={{ bg: "blue.500" }} mb={2} isFullWidth={true}>
+              <strong>Sign Up</strong>
+            </Button>
+          </Link>
+        </Stack>
       </Flex>
     )
   }
