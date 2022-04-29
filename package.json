@@ -24,9 +24,13 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/react": "1.x",
+    "@emotion/react": "11.x",
+    "@emotion/styled": "11.x",
     "@prisma/client": "3.13.0",
     "blitz": "0.45.4",
     "final-form": "4.20.7",
+    "framer-motion": "5.x",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-final-form": "6.5.9",

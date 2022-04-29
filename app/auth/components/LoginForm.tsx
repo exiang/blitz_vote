@@ -4,6 +4,10 @@ import { Form, FORM_ERROR } from "app/core/components/Form"
 import login from "app/auth/mutations/login"
 import { Login } from "app/auth/validations"
 
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
+import { Center, Square, Circle } from "@chakra-ui/react"
+
 type LoginFormProps = {
   onSuccess?: (user: PromiseReturnType<typeof login>) => void
 }
@@ -13,7 +17,7 @@ export const LoginForm = (props: LoginFormProps) => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <Heading>Login</Heading>
 
       <Form
         submitText="Login"

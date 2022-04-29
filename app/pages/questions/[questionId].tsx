@@ -5,6 +5,9 @@ import getQuestion from "app/questions/queries/getQuestion"
 import deleteQuestion from "app/questions/mutations/deleteQuestion"
 import updateChoice from "app/choices/mutations/updateChoice"
 
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
+
 export const Question = () => {
   const router = useRouter()
   const questionId = useParam("questionId", "number")
@@ -29,21 +32,26 @@ export const Question = () => {
       </Head>
 
       <div>
-        <h1>Question {question.text}</h1>
+        <Heading>Question {question.text}</Heading>
         <ul>
           {question.choices.map((choice) => (
             <li key={choice.id}>
               {choice.text} - {choice.votes} votes
-              <button onClick={() => handleVote(choice.id)}>Vote</button>
+              <Button colorScheme="blue" size="xs" onClick={() => handleVote(choice.id)}>
+                Vote
+              </Button>
             </li>
           ))}
         </ul>
 
         <Link href={Routes.EditQuestionPage({ questionId: question.id })}>
-          <a>Edit</a>
+          <Button colorScheme="teal">
+            <a>Edit</a>
+          </Button>
         </Link>
 
-        <button
+        <Button
+          colorScheme="red"
           type="button"
           onClick={async () => {
             if (window.confirm("This will be deleted")) {
@@ -54,7 +62,7 @@ export const Question = () => {
           style={{ marginLeft: "0.5rem" }}
         >
           Delete
-        </button>
+        </Button>
       </div>
     </>
   )
@@ -65,7 +73,9 @@ const ShowQuestionPage: BlitzPage = () => {
     <div>
       <p>
         <Link href={Routes.QuestionsPage()}>
-          <a>Questions</a>
+          <Button colorScheme="teal" variant="outline">
+            <a>Questions</a>
+          </Button>
         </Link>
       </p>
 

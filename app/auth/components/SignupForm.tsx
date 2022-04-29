@@ -4,6 +4,10 @@ import { Form, FORM_ERROR } from "app/core/components/Form"
 import signup from "app/auth/mutations/signup"
 import { Signup } from "app/auth/validations"
 
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
+import { Center, Square, Circle } from "@chakra-ui/react"
+
 type SignupFormProps = {
   onSuccess?: () => void
 }
@@ -13,7 +17,7 @@ export const SignupForm = (props: SignupFormProps) => {
 
   return (
     <div>
-      <h1>Create an Account</h1>
+      <Heading>Create an Account</Heading>
 
       <Form
         submitText="Create Account"

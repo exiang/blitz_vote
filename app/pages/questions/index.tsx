@@ -3,6 +3,9 @@ import { Head, Link, usePaginatedQuery, useRouter, BlitzPage, Routes } from "bli
 import Layout from "app/core/layouts/Layout"
 import getQuestions from "app/questions/queries/getQuestions"
 
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
+
 const ITEMS_PER_PAGE = 100
 
 export const QuestionsList = () => {
@@ -36,12 +39,24 @@ export const QuestionsList = () => {
         ))}
       </ul>
 
-      <button disabled={page === 0} onClick={goToPreviousPage}>
+      <Button
+        colorScheme="teal"
+        variant="outline"
+        size="xs"
+        disabled={page === 0}
+        onClick={goToPreviousPage}
+      >
         Previous
-      </button>
-      <button disabled={!hasMore} onClick={goToNextPage}>
+      </Button>
+      <Button
+        colorScheme="teal"
+        variant="outline"
+        size="xs"
+        disabled={!hasMore}
+        onClick={goToNextPage}
+      >
         Next
-      </button>
+      </Button>
     </div>
   )
 }
@@ -56,7 +71,9 @@ const QuestionsPage: BlitzPage = () => {
       <div>
         <p>
           <Link href={Routes.NewQuestionPage()}>
-            <a>Create Question</a>
+            <Button colorScheme="teal" variant="solid">
+              <a>Create Question</a>
+            </Button>
           </Link>
         </p>
 

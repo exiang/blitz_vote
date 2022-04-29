@@ -5,13 +5,17 @@ import { Form, FORM_ERROR } from "app/core/components/Form"
 import { ResetPassword } from "app/auth/validations"
 import resetPassword from "app/auth/mutations/resetPassword"
 
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
+import { Center, Square, Circle } from "@chakra-ui/react"
+
 const ResetPasswordPage: BlitzPage = () => {
   const query = useRouterQuery()
   const [resetPasswordMutation, { isSuccess }] = useMutation(resetPassword)
 
   return (
     <div>
-      <h1>Set a New Password</h1>
+      <Heading>Set a New Password</Heading>
 
       {isSuccess ? (
         <div>

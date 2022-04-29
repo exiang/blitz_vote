@@ -4,13 +4,15 @@ import createQuestion from "app/questions/mutations/createQuestion"
 import { QuestionForm, FORM_ERROR } from "app/questions/components/QuestionForm"
 import { createQuestionSchema } from "app/questions/validations"
 
+import { Heading } from "@chakra-ui/react"
+
 const NewQuestionPage: BlitzPage = () => {
   const router = useRouter()
   const [createQuestionMutation] = useMutation(createQuestion)
 
   return (
     <div>
-      <h1>Create New Question</h1>
+      <Heading>Create New Question</Heading>
 
       <QuestionForm
         submitText="Create Question"

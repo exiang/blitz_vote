@@ -5,12 +5,16 @@ import { Form, FORM_ERROR } from "app/core/components/Form"
 import { ForgotPassword } from "app/auth/validations"
 import forgotPassword from "app/auth/mutations/forgotPassword"
 
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
+import { Center, Square, Circle } from "@chakra-ui/react"
+
 const ForgotPasswordPage: BlitzPage = () => {
   const [forgotPasswordMutation, { isSuccess }] = useMutation(forgotPassword)
 
   return (
     <div>
-      <h1>Forgot your password?</h1>
+      <Heading>Forgot your password?</Heading>
 
       {isSuccess ? (
         <div>

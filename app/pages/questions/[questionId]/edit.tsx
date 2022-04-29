@@ -5,6 +5,9 @@ import getQuestion from "app/questions/queries/getQuestion"
 import updateQuestion from "app/questions/mutations/updateQuestion"
 import { QuestionForm, FORM_ERROR } from "app/questions/components/QuestionForm"
 
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
+
 export const EditQuestion = () => {
   const router = useRouter()
   const questionId = useParam("questionId", "number")
@@ -25,8 +28,8 @@ export const EditQuestion = () => {
       </Head>
 
       <div>
-        <h1>Edit Question {question.id}</h1>
-        <pre>{JSON.stringify(question, null, 2)}</pre>
+        <Heading>Edit Question {question.id}</Heading>
+        {/*<pre>{JSON.stringify(question, null, 2)}</pre>*/}
 
         <QuestionForm
           submitText="Update Question"
@@ -65,7 +68,9 @@ const EditQuestionPage: BlitzPage = () => {
 
       <p>
         <Link href={Routes.QuestionsPage()}>
-          <a>Questions</a>
+          <Button colorScheme="teal" variant="outline">
+            <a>Questions</a>
+          </Button>
         </Link>
       </p>
     </div>
