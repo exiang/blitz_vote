@@ -2,7 +2,7 @@ import { resolver } from "blitz"
 import db from "db"
 import { z } from "zod"
 
-const CreateQuestion = z.object({
+export const CreateQuestion = z.object({
   text: z.string().nonempty({ message: "You must enter a question." }),
   choices: z.array(z.object({ text: z.string() })),
 })
